@@ -12,7 +12,33 @@
         <%@ include file="../include/header.jsp" %>
         <div class="padding-border">
             <h1>Lista de Productos</h1>
-            
+            <div id="filtro">
+            <form action="/onlineshop/TiendaServlet">
+                <%
+                    String nombre = (String) request.getAttribute("nombre");
+                    String categoria = (String) request.getAttribute("idCategoria");
+                %>
+                Nombre del Producto: <input type="text" name="nombre" value="<%= nombre %>"/>&nbsp;&nbsp;&nbsp;
+                Categoria: 
+                <select name="idCategoria">
+                    <option value="0">Seleccionar</option>
+            <%
+                ArrayList<Categoria> categoriasFilter = (ArrayList<Categoria>) request.getAttribute("categorias");
+                for (Categoria cat : categoriasFilter) {
+                    if( cat.getIdCategoria() == Integer.parseInt(categoria)){ %>
+                        <option value="<%=cat.getIdCategoria()%>" selected><%=cat.getDescripcion()%></option>
+                        
+                   <% } else { %>                  
+                   
+                        <option value="<%=cat.getIdCategoria()%>"><%=cat.getDescripcion()%></option>
+            <% }
+                }
+            %>
+                    </select>
+                    <input type="hidden" name="vaccion" value="Filtrar"/>
+                    <input id="filtrar" type="submit" value="Filtrar"/>
+            </form>
+            </div>
             <table>
                 <tr>
                     <th>Id</th>
@@ -61,7 +87,6 @@
             </table>
                 <h1>Productos seleccionados</h1>
                 
-            <form action="/onlineshop/TiendaServlet">
             <table>
                 <tr>
                     <th>Id</th>
@@ -94,9 +119,11 @@
                     <td><%=c.getCantidad()%></td>
                     <td><%=c.getPrecioUnit()%></td>
                     <td>
+            <form action="/onlineshop/TiendaServlet">
                             <input type="hidden" name="vaccion" value="Eliminar"/>
                             <input type="hidden" name="idProducto" value="<%=c.getIdProducto()%>"/>
                             <input type="submit" value="Eliminar"/>
+            </form>
                     </td>
                 </tr>
                 <%
@@ -104,7 +131,6 @@
                 %>
 
             </table>
-            </form>
             <form action="/onlineshop/TiendaServlet">
                 <input type="hidden" name="vaccion" value="Comprar"/>
                 <% if( productosCargados.size() > 0 ) {  %>

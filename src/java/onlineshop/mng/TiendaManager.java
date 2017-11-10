@@ -196,4 +196,50 @@ public class TiendaManager {
 
         return retCategoria;
     }   
+
+    public ArrayList<Producto> getFilter(String nombre, String idCategoria) {
+        ArrayList<Producto> retValue = new ArrayList<Producto>();
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DBUtils.getConnection();
+            String sql = "select id_producto, descripcion, id_categoria,  cantidad, precio_unit from producto ";
+            Boolean nuevo = true;
+            if(nombre != null && !nombre.equals("") ) {
+                sql += " where upper(descripcion) like upper('%"+nombre+"%') ";
+                nuevo = false;
+                
+            }
+            if(idCategoria != null && !idCategoria.equals("") && !idCategoria.equals("0") ) {                
+                if(!nuevo){
+                    sql += " AND ";
+                }else {
+                    sql += " where ";
+                }
+                sql += " id_categoria = "+idCategoria;
+                
+            }
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Producto c = new Producto();
+                c.setIdProducto(rs.getInt(1));
+                c.setDescripcion(rs.getString(2));
+                c.setIdCategoria(rs.getInt(3));
+                c.setCantidad(rs.getInt(4));
+                c.setPrecioUnit(rs.getInt(5));
+                retValue.add(c);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(TiendaManager.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DBUtils.closeConnection(conn);
+        }
+
+        return retValue;
+    }
 }

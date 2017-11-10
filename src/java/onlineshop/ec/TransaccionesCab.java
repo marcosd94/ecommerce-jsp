@@ -16,7 +16,7 @@ public class TransaccionesCab {
 Integer idTransacción;
 Date fecha;
 Integer idUsuario;
-Double total;
+Integer total;
 String direccionDeEnvio;
 Integer idMedioPago; //0 Efectivo, 1 Tarjeta de Credito
 String nroTarjeta; //solo si id_medio_pago == 1
@@ -49,11 +49,11 @@ String estado; //I Ingresado
         this.idUsuario = idUsuario;
     }
 
-    public Double getTotal() {
+    public Integer getTotal() {
         return total;
     }
 
-    public void setTotal(Double total) {
+    public void setTotal(Integer total) {
         this.total = total;
     }
 

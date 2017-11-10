@@ -77,23 +77,21 @@
                     <td>
                     
                     
-                    <select name="idMedio">
-                        <option value="" selected>Seleccione</option>
+                    <select name="idMedioPago">
+                        <option value="0" selected>Efectivo</option>
                         <option value="1" >Tarjeta de Crédito</option>
-                        <option value="2" >Giros</option>
-                        <option value="3" >Cuenta Bancaria</option>
                     </select>
                 </td>
 
                     
                 </tr>
                 <tr>
-                    <td>Dato del medio de pago</td>
-                    <td><input type="text" name="datosMedio"/></td>
+                    <td>Número Tarjeta</td>
+                    <td><input type="text" name="nroTarjeta"/></td>
                 </tr>
                 <tr>
                     <td>Dirección de Envio</td>
-                    <td><input type="text" name="direccion"/></td>
+                    <td><input type="text" name="direccionDeEnvio"/></td>
                 </tr>
             </table>
             <input type="hidden" name="vaccion" value="Pagar"/>

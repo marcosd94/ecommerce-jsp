@@ -11,9 +11,10 @@
     <body style="margin:0px">
         <%@ include file="../include/header.jsp" %>
         <div class="login">
+        <h1>Iniciar Sesión</h1>
             <tools:img path="../image/login.png"/>  
                     <form action="/onlineshop/LoginServlet">
-            <input type="text" placeholder="Usuario" name="nombreUsuario">  
+                        <input type="text" placeholder="Usuario" name="nombreUsuario" onfocus>  
             <input type="password" placeholder="Contraseña" name="pass">
             <input type="submit" value="Iniciar Sesión">
             <input type="hidden" name="vaccion" value="Iniciar"/>

@@ -9,6 +9,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 /**
  *
@@ -16,14 +19,20 @@ import java.util.logging.Logger;
  */
 public class DBUtils {
 
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException, Exception {
         try {
-            Class.forName("org.postgresql.Driver");
+        Context ctx = new InitialContext();
+        if (ctx == null)
+            throw new Exception("Boom - No Context");
+        Context envCtx = (Context) ctx.lookup("java:comp/env");
+        DataSource ds = (DataSource) envCtx.lookup("jdbc/DefaultDB");
+        
+        Connection conn = ds.getConnection();
+        return conn;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DBUtils.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/jsppostgres", "postgres", "postgres");
-        return conn;
+        return null;
     }
 
     public static void closeConnection(Connection conn) {

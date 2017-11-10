@@ -56,6 +56,8 @@ public class TiendaServlet extends HttpServlet {
             request.setAttribute("categorias", categorias);
             session.setAttribute("productosCargados", productosCargados);
             request.setAttribute("productosCargados", productosCargados);
+            request.setAttribute("nombre", "");
+            request.setAttribute("idCategoria", "0");
 
             RequestDispatcher rd = request.getRequestDispatcher("/tienda/Tienda.jsp");
             if (rd != null) {
@@ -92,6 +94,8 @@ public class TiendaServlet extends HttpServlet {
             request.setAttribute("categorias", categorias);
             request.setAttribute("productosCargados", productosCargados);
             session.setAttribute("productosCargados", productosCargados);
+            request.setAttribute("nombre", "");
+            request.setAttribute("idCategoria", "0");
 
             RequestDispatcher rd = request.getRequestDispatcher("/tienda/Tienda.jsp");
             if (rd != null) {
@@ -101,14 +105,17 @@ public class TiendaServlet extends HttpServlet {
         if ("Eliminar".equals(vaccion)) {
             System.out.println("Elminar item");
             Integer idProducto = Integer.parseInt(request.getParameter("idProducto"));
+            System.out.println(idProducto);
             int index = 0;
-            for(int i = 0 ; i > productosCargados.size() ; i++){
+            for(int i = 0 ; i < productosCargados.size() ; i++){
                 ProductosCargados item = productosCargados.get(i);
                 if(item.getIdProducto() == idProducto){
+                    System.out.println(i);
                     index = i;
                     break;
                 }
             }
+            System.out.println(index);
             productosCargados.remove(index);
             ArrayList<Producto> productos = tiendaManager.getAll();
             ArrayList<Categoria> categorias = tiendaManager.getAllCategorias();
@@ -116,6 +123,9 @@ public class TiendaServlet extends HttpServlet {
             request.setAttribute("categorias", categorias);
             request.setAttribute("productosCargados", productosCargados);
             session.setAttribute("productosCargados", productosCargados);
+            session.setAttribute("data", productosCargados);
+            request.setAttribute("nombre", "");
+            request.setAttribute("idCategoria", "0");
 
             RequestDispatcher rd = request.getRequestDispatcher("/tienda/Tienda.jsp");
             if (rd != null) {
@@ -137,8 +147,23 @@ public class TiendaServlet extends HttpServlet {
                 }
             }            
         }
-        if(1==1){
+        if ("Filtrar".equals(vaccion)) {
+            String nombre = request.getParameter("nombre");
+            String idCategoria = request.getParameter("idCategoria");
             
+            ArrayList<Producto> productos = tiendaManager.getFilter(nombre, idCategoria);
+            ArrayList<Categoria> categorias = tiendaManager.getAllCategorias();
+            request.setAttribute("productos", productos);
+            request.setAttribute("categorias", categorias);
+            session.setAttribute("productosCargados", productosCargados);
+            request.setAttribute("productosCargados", productosCargados);
+            request.setAttribute("nombre", nombre);
+            request.setAttribute("idCategoria", idCategoria);
+
+            RequestDispatcher rd = request.getRequestDispatcher("/tienda/Tienda.jsp");
+            if (rd != null) {
+                rd.forward(request, response);
+            }            
         }
     }
 

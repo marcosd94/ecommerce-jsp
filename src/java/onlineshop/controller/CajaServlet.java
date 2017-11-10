@@ -8,6 +8,7 @@ package onlineshop.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,9 @@ import javax.servlet.http.HttpSession;
 import onlineshop.ec.Categoria;
 import onlineshop.ec.Producto;
 import onlineshop.ec.ProductosCargados;
+import onlineshop.ec.TransaccionesCab;
+import onlineshop.ec.Usuario;
+import onlineshop.mng.CajaManager;
 import onlineshop.mng.TiendaManager;
 
 /**
@@ -67,12 +71,38 @@ public class CajaServlet extends HttpServlet {
             ArrayList<Categoria> categorias = tiendaManager.getAllCategorias();
             request.setAttribute("productos", productos);
             request.setAttribute("categorias", categorias);
-        ArrayList<ProductosCargados> productosCargadosClear = new ArrayList<ProductosCargados>();
-            request.setAttribute("productosCargados", productosCargadosClear);
-            session.setAttribute("productosCargados",productosCargadosClear);
-            session.setAttribute("data",productosCargadosClear);
-            System.out.println("Compra exitosa");
-            response.sendRedirect(request.getContextPath() + "/");
+            
+            
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            if(usuario != null){
+                CajaManager cajaManager = new CajaManager();
+                
+                Integer idMedioPago = Integer.parseInt(request.getParameter("idMedioPago"));
+                String nroTarjeta = request.getParameter("nroTarjeta");
+                String direccionDeEnvio = request.getParameter("direccionDeEnvio");
+                
+                
+                TransaccionesCab transaccionesCab = new TransaccionesCab();
+                transaccionesCab.setFecha(new Date());
+                transaccionesCab.setDireccionDeEnvio(direccionDeEnvio);
+                transaccionesCab.setIdMedioPago(idMedioPago);
+                transaccionesCab.setNroTarjeta(nroTarjeta);
+                
+                
+                cajaManager.confirmarCompra(productosCargados, usuario, transaccionesCab);
+                
+                //SE borra el carrito
+                ArrayList<ProductosCargados> productosCargadosClear = new ArrayList<ProductosCargados>();
+                request.setAttribute("productosCargados", productosCargadosClear);
+                session.setAttribute("productosCargados",productosCargadosClear);
+                session.setAttribute("data",productosCargadosClear);
+                System.out.println("Compra exitosa");
+                response.sendRedirect(request.getContextPath() + "/");
+            }else{                
+                RequestDispatcher rd = request.getServletContext().getRequestDispatcher("/login/Login.jsp");
+            }
+            
+            
         }
         
         

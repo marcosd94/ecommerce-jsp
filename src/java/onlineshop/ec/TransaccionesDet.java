@@ -14,8 +14,9 @@ public class TransaccionesDet {
     Integer item;
     Integer idProducto;
     Integer cantidad;
-    Double precio;
-    Double subTotal;
+    Integer precio;
+    Integer subTotal;
+    Integer idTransaccionesCab;
 
     public TransaccionesDet() {
     }
@@ -52,19 +53,27 @@ public class TransaccionesDet {
         this.cantidad = cantidad;
     }
 
-    public Double getPrecio() {
+    public Integer getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Double precio) {
+    public void setPrecio(Integer precio) {
         this.precio = precio;
     }
 
-    public Double getSubTotal() {
+    public Integer getSubTotal() {
         return subTotal;
     }
 
-    public void setSubTotal(Double subTotal) {
+    public void setSubTotal(Integer subTotal) {
         this.subTotal = subTotal;
     }      
+
+    public Integer getIdTransaccionesCab() {
+        return idTransaccionesCab;
+    }
+
+    public void setIdTransaccionesCab(Integer idTransaccionesCab) {
+        this.idTransaccionesCab = idTransaccionesCab;
+    }
 }
