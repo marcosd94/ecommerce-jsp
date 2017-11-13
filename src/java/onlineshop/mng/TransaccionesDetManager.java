@@ -15,7 +15,7 @@ import onlineshop.util.DBUtils;
 public class TransaccionesDetManager {
     
 
-    public Integer insertar(TransaccionesDet c) {
+    public Integer insertar(TransaccionesDet c) throws Exception  {
         Integer idTransaccionesCab = 0;
 
         Connection conn = null;

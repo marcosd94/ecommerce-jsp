@@ -16,10 +16,10 @@
     <li><a href="/onlineshop/UsuarioServlet">Usuarios</a></li>
     <li><a href="/onlineshop/ProductoServlet">Productos</a></li>
     <li><a href="/onlineshop/CategoriaServlet">Categorias</a></li>
-    <li><a href="/onlineshop/TransaccionesCabServlet">Ver Compras</a></li>
          
 <% }
     if(usuario != null) {  %>
+    <li><a href="/onlineshop/TransaccionesCabServlet">Ver Compras</a></li>
 
     <form action="/onlineshop/LogoutServlet">
   <label class="logoutLblPos">

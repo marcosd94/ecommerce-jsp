@@ -17,7 +17,7 @@ import onlineshop.util.Utils;
 
 public class LoginManager {
 
-    public Usuario verificarUsuario(String nombreUsuario, String pass) {
+    public Usuario verificarUsuario(String nombreUsuario, String pass) throws Exception {
         Usuario c = null;
 
         Connection conn = null;

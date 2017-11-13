@@ -40,7 +40,7 @@ public class TransaccionesCabServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ParseException {
+            throws ServletException, IOException, ParseException, Exception {
         
         HttpSession session = request.getSession();
         String vaccion = request.getParameter("vaccion");
@@ -109,7 +109,7 @@ public class TransaccionesCabServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ParseException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(TransaccionesCabServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -127,7 +127,7 @@ public class TransaccionesCabServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ParseException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(TransaccionesCabServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

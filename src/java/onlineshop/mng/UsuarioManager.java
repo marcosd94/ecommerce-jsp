@@ -22,7 +22,7 @@ import onlineshop.util.Utils;
  */
 public class UsuarioManager {
 
-    public boolean insertar(Usuario c) {
+    public boolean insertar(Usuario c)  throws Exception {
         boolean retValue = true;
 
         Connection conn = null;
@@ -62,7 +62,7 @@ public class UsuarioManager {
         return retValue;
     }
 
-    public boolean update(Usuario c) {
+    public boolean update(Usuario c) throws Exception  {
         boolean retValue = true;
 
         Connection conn = null;
@@ -90,7 +90,7 @@ public class UsuarioManager {
         return retValue;
     }
 
-    public boolean delete(Usuario c) {
+    public boolean delete(Usuario c) throws Exception  {
         boolean retValue = true;
 
         Connection conn = null;
@@ -112,7 +112,7 @@ public class UsuarioManager {
         return retValue;
     }
 
-    public Usuario getUsuarioById(int id) {
+    public Usuario getUsuarioById(int id)  throws Exception {
         Usuario c = null;
 
         Connection conn = null;
@@ -143,7 +143,7 @@ public class UsuarioManager {
         return c;
     }
     
-    public ArrayList<Usuario> getAll() {
+    public ArrayList<Usuario> getAll() throws Exception  {
         ArrayList<Usuario> retValue = new ArrayList<Usuario>();
 
         Connection conn = null;

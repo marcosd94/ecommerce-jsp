@@ -23,7 +23,7 @@ import onlineshop.util.DBUtils;
  */
 public class ProductoManager {
 
-    public boolean insertar(Producto c) {
+    public boolean insertar(Producto c) throws Exception {
         boolean retValue = true;
 
         Connection conn = null;
@@ -62,7 +62,7 @@ public class ProductoManager {
         return retValue;
     }
 
-    public boolean update(Producto c) {
+    public boolean update(Producto c) throws Exception  {
         boolean retValue = true;
 
         Connection conn = null;
@@ -88,7 +88,7 @@ public class ProductoManager {
         return retValue;
     }
 
-    public boolean delete(Producto c) {
+    public boolean delete(Producto c) throws Exception  {
         boolean retValue = true;
 
         Connection conn = null;
@@ -110,7 +110,7 @@ public class ProductoManager {
         return retValue;
     }
 
-    public Producto getProductoById(int id) {
+    public Producto getProductoById(int id)  throws Exception {
         Producto retValue = null;
 
         Connection conn = null;
@@ -140,7 +140,7 @@ public class ProductoManager {
         return retValue;
     }
     
-    public ArrayList<Producto> getAll() {
+    public ArrayList<Producto> getAll()  throws Exception {
         ArrayList<Producto> retValue = new ArrayList<Producto>();
         //ArrayList<Categoria> retCategoria = new ArrayList<Categoria>();
 
@@ -170,7 +170,7 @@ public class ProductoManager {
 
         return retValue;
     }    
-    public ArrayList<Categoria> getAllCategorias() {
+    public ArrayList<Categoria> getAllCategorias()  throws Exception {
         //ArrayList<Producto> retValue = new ArrayList<Producto>();
         ArrayList<Categoria> retCategoria = new ArrayList<Categoria>();
 

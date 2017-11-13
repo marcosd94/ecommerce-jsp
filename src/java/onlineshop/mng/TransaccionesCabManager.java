@@ -23,7 +23,7 @@ import onlineshop.util.DBUtils;
 
 public class TransaccionesCabManager {
     
-    public Integer insertar(TransaccionesCab c) {
+    public Integer insertar(TransaccionesCab c) throws Exception  {
         Integer idTransaccionesCab = 0;
 
         Connection conn = null;
@@ -59,7 +59,7 @@ public class TransaccionesCabManager {
         return idTransaccionesCab;
     }
 
-    private int buscarMaximo() {
+    private int buscarMaximo()  throws Exception {
         Integer siguiente = 0;
 
         Connection conn = null;
@@ -84,7 +84,7 @@ public class TransaccionesCabManager {
         return siguiente;
     }
 
-    public ArrayList<TransaccionesCab> getCompras(Integer idUsuario) throws ParseException {
+    public ArrayList<TransaccionesCab> getCompras(Integer idUsuario) throws ParseException, Exception {
         
         ArrayList<TransaccionesCab> retValue = new ArrayList<TransaccionesCab>();
         //ArrayList<Categoria> retCategoria = new ArrayList<Categoria>();
@@ -123,7 +123,7 @@ public class TransaccionesCabManager {
         return retValue;
     }
 
-    public ArrayList<TransaccionesDet> getComprasdetalles(Integer transaccionId) {
+    public ArrayList<TransaccionesDet> getComprasdetalles(Integer transaccionId)  throws Exception {
         ArrayList<TransaccionesDet> retValue = new ArrayList<TransaccionesDet>();
         //ArrayList<Categoria> retCategoria = new ArrayList<Categoria>();
 

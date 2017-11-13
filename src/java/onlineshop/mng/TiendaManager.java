@@ -22,7 +22,7 @@ import onlineshop.util.DBUtils;
  */
 public class TiendaManager {
 
-    public boolean insertar(Producto c) {
+    public boolean insertar(Producto c)  throws Exception {
         boolean retValue = true;
 
         Connection conn = null;
@@ -61,7 +61,7 @@ public class TiendaManager {
         return retValue;
     }
 
-    public boolean update(Producto c) {
+    public boolean update(Producto c)  throws Exception {
         boolean retValue = true;
 
         Connection conn = null;
@@ -87,7 +87,7 @@ public class TiendaManager {
         return retValue;
     }
 
-    public boolean delete(Producto c) {
+    public boolean delete(Producto c)  throws Exception {
         boolean retValue = true;
 
         Connection conn = null;
@@ -109,7 +109,7 @@ public class TiendaManager {
         return retValue;
     }
 
-    public Producto getProductoById(int id) {
+    public Producto getProductoById(int id)  throws Exception {
         Producto retValue = null;
 
         Connection conn = null;
@@ -139,7 +139,7 @@ public class TiendaManager {
         return retValue;
     }
     
-    public ArrayList<Producto> getAll() {
+    public ArrayList<Producto> getAll() throws Exception  {
         ArrayList<Producto> retValue = new ArrayList<Producto>();
 
         Connection conn = null;
@@ -168,7 +168,7 @@ public class TiendaManager {
 
         return retValue;
     }    
-    public ArrayList<Categoria> getAllCategorias() {
+    public ArrayList<Categoria> getAllCategorias()  throws Exception {
         //ArrayList<Producto> retValue = new ArrayList<Producto>();
         ArrayList<Categoria> retCategoria = new ArrayList<Categoria>();
 
@@ -197,7 +197,7 @@ public class TiendaManager {
         return retCategoria;
     }   
 
-    public ArrayList<Producto> getFilter(String nombre, String idCategoria) {
+    public ArrayList<Producto> getFilter(String nombre, String idCategoria)  throws Exception {
         ArrayList<Producto> retValue = new ArrayList<Producto>();
 
         Connection conn = null;

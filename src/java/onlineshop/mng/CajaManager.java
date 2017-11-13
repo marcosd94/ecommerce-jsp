@@ -15,7 +15,7 @@ import onlineshop.ec.Usuario;
 
 public class CajaManager {
 
-    public Integer confirmarCompra(ArrayList<ProductosCargados> productosCargados, Usuario usuario, TransaccionesCab transaccionesCab) {
+    public Integer confirmarCompra(ArrayList<ProductosCargados> productosCargados, Usuario usuario, TransaccionesCab transaccionesCab) throws Exception {
         transaccionesCab.setEstado("I");
         transaccionesCab.setIdUsuario(usuario.getIdUsuario());
         transaccionesCab.setTotal(calcularTotal(productosCargados));
@@ -40,14 +40,14 @@ public class CajaManager {
             return total;
     }
 
-    private void manejarStock(Integer idProducto, ProductosCargados productosCargados) {        
+    private void manejarStock(Integer idProducto, ProductosCargados productosCargados) throws Exception {        
         ProductoManager productoManager = new ProductoManager();
         Producto c = productoManager.getProductoById(idProducto);
         c.setCantidad(c.getCantidad()-productosCargados.getCantidad());
         productoManager.update(c);
     }
 
-    private void insertarDetalles(ProductosCargados c, Integer idTransacionesCab, Integer item) {
+    private void insertarDetalles(ProductosCargados c, Integer idTransacionesCab, Integer item) throws Exception {
         TransaccionesDet transaccionesDet = new TransaccionesDet();
         transaccionesDet.setCantidad(c.getCantidad());
         

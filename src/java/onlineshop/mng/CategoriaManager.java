@@ -21,7 +21,7 @@ import onlineshop.util.DBUtils;
  */
 public class CategoriaManager {
 
-    public boolean insertar(Categoria c) {
+    public boolean insertar(Categoria c) throws Exception {
         boolean retValue = true;
 
         Connection conn = null;
@@ -50,7 +50,7 @@ public class CategoriaManager {
         return retValue;
     }
 
-    public boolean update(Categoria c) {
+    public boolean update(Categoria c) throws Exception {
         boolean retValue = true;
 
         Connection conn = null;
@@ -73,7 +73,7 @@ public class CategoriaManager {
         return retValue;
     }
 
-    public boolean delete(Categoria c) {
+    public boolean delete(Categoria c) throws Exception {
         boolean retValue = true;
 
         Connection conn = null;
@@ -95,7 +95,7 @@ public class CategoriaManager {
         return retValue;
     }
 
-    public Categoria getCategoriaById(int id) {
+    public Categoria getCategoriaById(int id) throws Exception {
         Categoria retValue = null;
 
         Connection conn = null;
@@ -122,7 +122,7 @@ public class CategoriaManager {
         return retValue;
     }
     
-    public ArrayList<Categoria> getAll() {
+    public ArrayList<Categoria> getAll() throws Exception {
         ArrayList<Categoria> retValue = new ArrayList<Categoria>();
 
         Connection conn = null;
