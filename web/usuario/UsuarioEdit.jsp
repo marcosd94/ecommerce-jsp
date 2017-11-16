@@ -16,25 +16,25 @@
             <table>
                 <tr>
                     <td>Nombre</td>
-                    <td><input type="text" name="nombre" value="<%=c.getNombre()%>"/></td>
+                    <td><input type="text" name="nombre" value="<%=c.getNombre()%>" required="true"/></td>
                 </tr>
                 <tr>
                     <td>Apellido</td>
-                    <td><input type="text" name="apellido" value="<%=c.getApellido()%>"/></td>
+                    <td><input type="text" name="apellido" value="<%=c.getApellido()%>" required="true"/></td>
                 </tr>
                 <tr>
                     <td>Login Name</td>
-                    <td><input type="text" name="loginName" value="<%=c.getLoginName()%>"/></td>
+                    <td><input type="text" name="loginName" value="<%=c.getLoginName()%>" required="true"/></td>
                 </tr>
                 <tr>
                     <td>Contraseña</td>
-                    <td><input type="text" name="contrasenha" value="<%=c.getContrasenha()%>"/></td>
+                    <td><input type="text" name="contrasenha" value="<%=c.getContrasenha()%>" required="true"/></td>
                 </tr>
                 <tr>
                     <td>Tipo Usuario</td>
                     <td>
                     
-                    <select name="tipoUsuario">
+                    <select name="tipoUsuario"  required="true">
             <%
             String tipoUsuario[] =  {"Administrador","Cliente"};
                for (int i=0; i<(tipoUsuario.length); i++ ) {

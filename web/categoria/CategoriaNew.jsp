@@ -20,7 +20,7 @@
             <table>
                 <tr>
                     <td>Descripcion</td>
-                    <td><input type="text" name="descripcion"/></td>
+                    <td><input type="text" name="descripcion" required="true"/></td>
                 </tr>
             </table>
             <input type="hidden" name="vaccion" value="GrabarNuevo"/>

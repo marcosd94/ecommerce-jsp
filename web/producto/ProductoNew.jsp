@@ -20,15 +20,15 @@
                 </tr>
                 <tr>
                     <td>Descripcion</td>
-                    <td><input type="text" name="descripcion"/></td>
+                    <td><input type="text" name="descripcion" required="true"/></td>
                 </tr>
                 <tr>
-                    <td>Categoria Id</td>
+                    <td>Categoria</td>
                    
                                     <td>
                     
                     
-                    <select name="idCategoria">
+                    <select name="idCategoria" required="true">
                         <option value="" selected>Seleccione</option>
             <%
                 ArrayList<Categoria> categorias = (ArrayList<Categoria>) request.getAttribute("categorias");
@@ -45,11 +45,11 @@
                 </tr>
                 <tr>
                     <td>Precio</td>
-                    <td><input type="text" name="precioUnit"/></td>
+                    <td><input type="number" name="precioUnit" required="true"/></td>
                 </tr>
                 <tr>
                     <td>Cantidad</td>
-                    <td><input type="text" name="cantidad"/></td>
+                    <td><input type="number" name="cantidad" required="true"/></td>
                 </tr>
             </table>
             <input type="hidden" name="vaccion" value="GrabarNuevo"/>

@@ -13,26 +13,26 @@
             <table>
                 <tr>
                     <td>Nombre</td>
-                    <td><input type="text" name="nombre"/></td>
+                    <td><input type="text" name="nombre" required="true"/></td>
                 </tr>
                 <tr>
                     <td>Apellido</td>
-                    <td><input type="text" name="apellido"/></td>
+                    <td><input type="text" name="apellido" required="true"/></td>
                 </tr>
                 <tr>
                     <td>Login Name</td>
-                    <td><input type="text" name="loginName"/></td>
+                    <td><input type="text" name="loginName" required="true"/></td>
                 </tr>
                 <tr>
                     <td>Contraseña</td>
-                    <td><input type="text" name="contrasenha"/></td>
+                    <td><input type="text" name="contrasenha" required="true"/></td>
                 </tr>
                 <tr>
                     <td>Tipo Usuario</td>
                     <td>
                     
                     
-                    <select name="tipoUsuario">
+                    <select name="tipoUsuario"  required="true">
                         <option value="" selected>Seleccione</option>
                         <option value="1" >Cliente</option>
                         <option value="0" >Administrador</option>

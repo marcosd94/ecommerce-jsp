@@ -19,14 +19,14 @@
             <table>
                 <tr>
                     <td>Descripcion</td>
-                    <td><input type="text" name="descripcion" value="<%=c.getDescripcion()%>"/></td>
+                    <td><input type="text" name="descripcion" value="<%=c.getDescripcion()%>" required="true"/></td>
                 </tr>
                 <tr>
-                    <td>Categoria Id</td>
+                    <td>Categoria</td>
                     <td>
                     
                     
-                    <select name="idCategoria">
+                    <select name="idCategoria" required="true">
             <%
                 ArrayList<Categoria> categorias = (ArrayList<Categoria>) request.getAttribute("categorias");
                 for (Categoria cat : categorias) {
@@ -44,11 +44,11 @@
                 </tr>
                 <tr>
                     <td>Precio</td>
-                    <td><input type="text" name="precioUnit" value="<%=c.getPrecioUnit()%>"/></td>
+                    <td><input type="number" name="precioUnit" value="<%=c.getPrecioUnit()%>" required="true"/></td>
                 </tr>
                 <tr>
                     <td>Cantidad</td>
-                    <td><input type="text" name="cantidad" value="<%=c.getCantidad()%>"/></td>
+                    <td><input type="number" name="cantidad" value="<%=c.getCantidad()%>" required="true"/></td>
                 </tr>
             </table>
             <input type="hidden" name="vid" value="<%=c.getIdProducto()%>"/>    

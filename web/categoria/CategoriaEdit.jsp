@@ -23,7 +23,7 @@
             <table>
                 <tr>
                     <td>Descripcion</td>
-                    <td><input type="text" name="descripcion" value="<%=c.getDescripcion()%>"/></td>
+                    <td><input type="text" name="descripcion" value="<%=c.getDescripcion()%>" required="true"/></td>
                 </tr>
             </table>
             <input type="hidden" name="vid" value="<%=c.getIdCategoria()%>"/>    
