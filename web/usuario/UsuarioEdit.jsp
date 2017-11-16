@@ -43,7 +43,7 @@
                         
                    <% } else { %>                  
                    
-                        <option value="i" ><%=tipoUsuario[i]%></option>
+                        <option value="<%=i%>" ><%=tipoUsuario[i]%></option>
             <% }
                 }
             %>

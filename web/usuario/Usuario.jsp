@@ -50,7 +50,6 @@
                     <form action="/onlineshop/UsuarioServlet">
                         <input type="hidden" name="vaccion" value="Editar"/>
                         <input type="hidden" name="vid" value="<%=c.getIdUsuario()%>"/>
-                        <input type="hidden" name="user" value="<%=request.getAttribute("user")%>"/>
                         <input type="submit" value="Editar"/>
                     </form>
                 </td>
@@ -59,7 +58,6 @@
                     <form action="/onlineshop/UsuarioServlet">
                         <input type="hidden" name="vaccion" value="Eliminar"/>
                         <input type="hidden" name="vid" value="<%=c.getIdUsuario()%>"/>
-                        <input type="hidden" name="user" value="<%=request.getAttribute("user")%>"/>
                         <input type="submit" value="Eliminar"/>
                     </form>
                 </td>
@@ -70,7 +68,6 @@
 
         </table>
         <form action="/onlineshop/usuario/UsuarioNew.jsp">
-            <input type="hidden" name="user" value="<%=request.getAttribute("user")%>"/>
             <input style="margin: 10px" type="submit" value="Crear"/>
         </form>
         </div>

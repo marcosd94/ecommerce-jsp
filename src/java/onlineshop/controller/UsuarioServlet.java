@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import onlineshop.ec.Usuario;
 import onlineshop.mng.UsuarioManager;
 
@@ -39,15 +40,17 @@ public class UsuarioServlet extends HttpServlet {
             throws ServletException, IOException, Exception {
 
         String vaccion = request.getParameter("vaccion");
-        String user = request.getParameter("user");
-            System.out.println(user);
-        if(user == null){
-            System.out.println("No logueado");
-        }else{
-            System.out.println("Logueado");
-        }
+
+        HttpSession sesion = request.getSession();
+        Usuario usuarioLogueado = (Usuario) sesion.getAttribute("usuario");
+
+        if(usuarioLogueado == null){                  
+            RequestDispatcher rd = request.getServletContext().getRequestDispatcher("/login/Login.jsp");
+            if (rd != null) {
+                rd.forward(request, response);
+            }              
+        }         
         request.setAttribute("vaccion", vaccion);
-        request.setAttribute("user", "mperalta");
 
         UsuarioManager usuarioManager = new UsuarioManager();
 

@@ -14,7 +14,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import onlineshop.ec.Categoria;
+import onlineshop.ec.Usuario;
 import onlineshop.mng.CategoriaManager;
 
 /**
@@ -38,6 +40,15 @@ public class CategoriaServlet extends HttpServlet {
         String vaccion = request.getParameter("vaccion");
         request.setAttribute("vaccion", vaccion);
 
+        HttpSession sesion = request.getSession();
+        Usuario usuarioLogueado = (Usuario) sesion.getAttribute("usuario");
+
+        if(usuarioLogueado == null){                  
+            RequestDispatcher rd = request.getServletContext().getRequestDispatcher("/login/Login.jsp");
+            if (rd != null) {
+                rd.forward(request, response);
+            }              
+        } 
         CategoriaManager cm = new CategoriaManager();
 
         if (vaccion == null) {
