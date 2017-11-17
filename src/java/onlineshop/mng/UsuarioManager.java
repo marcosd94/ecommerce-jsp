@@ -70,14 +70,23 @@ public class UsuarioManager {
 
         try {
             conn = DBUtils.getConnection();
-            //nombre, apellido, login_name, contrasenha, tipo_usuario
-            pstmt = conn.prepareStatement("update usuario set nombre = ?, apellido = ?, login_name = ?, contrasenha = ?, tipo_usuario = ?  where id_usuario = ?");            
-            pstmt.setString(1, c.getNombre());
-            pstmt.setString(2, c.getApellido());
-            pstmt.setString(3, c.getLoginName());
-            pstmt.setString(4, Utils.md5(c.getContrasenha()));
-            pstmt.setInt(5, c.getTipoUsuario());
-            pstmt.setInt(6, c.getIdUsuario());
+            
+            if(c.getContrasenha().length() == 32){
+                pstmt = conn.prepareStatement("update usuario set nombre = ?, apellido = ?, login_name = ?, tipo_usuario = ?  where id_usuario = ?");            
+                pstmt.setString(1, c.getNombre());
+                pstmt.setString(2, c.getApellido());
+                pstmt.setString(3, c.getLoginName());
+                pstmt.setInt(4, c.getTipoUsuario());
+                pstmt.setInt(5, c.getIdUsuario());
+            }else{
+                pstmt = conn.prepareStatement("update usuario set nombre = ?, apellido = ?, login_name = ?, contrasenha = ?, tipo_usuario = ?  where id_usuario = ?");            
+                pstmt.setString(1, c.getNombre());
+                pstmt.setString(2, c.getApellido());
+                pstmt.setString(3, c.getLoginName());
+                pstmt.setString(4, Utils.md5(c.getContrasenha()));
+                pstmt.setInt(5, c.getTipoUsuario());
+                pstmt.setInt(6, c.getIdUsuario());
+            }
             pstmt.execute();
 
         } catch (SQLException ex) {

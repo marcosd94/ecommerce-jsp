@@ -77,7 +77,7 @@
                     <td>
                     
                     
-                    <select name="idMedioPago">
+                        <select name="idMedioPago" required="true">
                         <option value="0" selected>Efectivo</option>
                         <option value="1" >Tarjeta de Crédito</option>
                     </select>
@@ -91,7 +91,7 @@
                 </tr>
                 <tr>
                     <td>Dirección de Envio</td>
-                    <td><input type="text" name="direccionDeEnvio"/></td>
+                    <td><input type="text" name="direccionDeEnvio" required="true"/></td>
                 </tr>
             </table>
             <input type="hidden" name="vaccion" value="Pagar"/>
